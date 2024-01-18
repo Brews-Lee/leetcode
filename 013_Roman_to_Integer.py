@@ -26,25 +26,27 @@ class Solution:
             if i >= len(nums):
                 break
             if i == len(nums) - 1:
-                result += num
+                result += nums[len(nums) - 1]
                 break
             # Next number is the same
             if nums[i] == nums[i + 1]:
                 if i != len(nums) - 2 and nums[i] == nums[i + 2]:
-                    result += 3 * num
+                    result += 3 * nums[i]
                     i += 3
                     continue
                 else:
-                    result += 2 * num
+                    result += 2 * nums[i]
                     i += 2
                     continue
             # Next number is larger
             elif nums[i] < nums[i + 1]:
                 result += nums[i + 1] - nums[i]
+                i += 2
+                continue
             # Next number is smaller
             else:
-                result += num
+                result += nums[i]
             i += 1
         return result
 
-print(Solution().romanToInt("III"))
+print(Solution().romanToInt("MCMXCVI"))
